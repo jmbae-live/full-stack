@@ -5,7 +5,7 @@ from core.user.serializers import UserSerializer
 
 
 class RegisterSerializer(UserSerializer):
-    password = serializers.CharField(max_length=128,min_length=8, write_only=True, required=True)
+    password = serializers.CharField(max_length=128, min_length=8, write_only=True, required=True)
 
     class Meta:
         model = User
