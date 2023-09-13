@@ -5,7 +5,7 @@ from django.db import models
 from django.http import Http404
 
 
-class AbstractManager:
+class AbstractManager(models.Manager):
     def get_object_by_public_id(self, public_id):
         try:
             instance = self.get(public_id=public_id)
