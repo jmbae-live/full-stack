@@ -47,7 +47,9 @@ class User(AbstractModel, AbstractBaseUser, PermissionsMixin):
 
     bio = models.TextField(null=True)
     avatar = models.ImageField(null=True)
-    
+
+    post_liked = models.ManyToManyField("core_post.Post", related_name='liked_by')
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
     objects = UserManager()
