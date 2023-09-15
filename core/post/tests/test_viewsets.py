@@ -58,3 +58,7 @@ class TestPostViewSet:
         assert response.data['id'] == post.public_id.hex
         assert response.data['body'] == post.body
         assert response.data['author']['id'] == post.author.public_id.hex
+
+    def test_delete_anonymous(self, client, user, post):
+        response = client.delete(self.endpoint + str(post.public_id) + '/')
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
