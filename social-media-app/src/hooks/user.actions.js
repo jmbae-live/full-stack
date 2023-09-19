@@ -49,4 +49,16 @@ function getUser() {
 }
 
 
-export default {useUserActions, getUser}
+// Get the access token
+function getAccessToken() {
+  const auth = JSON.parse(localStorage.getItem("auth"));
+  return auth.access;
+}
+
+// Get the refresh token
+function getRefreshToken() {
+  const auth = JSON.parse(localStorage.getItem("auth"));
+  return auth.refresh;
+}
+
+export default {useUserActions, getUser, getAccessToken, getRefreshToken}
