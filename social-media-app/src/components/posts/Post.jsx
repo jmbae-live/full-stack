@@ -1,6 +1,6 @@
 import React from "react"
 import { Card, Image } from "react-bootstrap"
-import { format } from "timeago"
+import { format } from "timeago.js"
 import { randomAvatar } from "../../utils"
 
 import { LikeFilled, LikeOutlined } from "@ant-design/icons"
