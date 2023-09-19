@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Button, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
-import useUserActions from "../../hooks/user.actions"
+import {useUserActions} from "../../hooks/user.actions"
 
 function LoginForm() {
 	const navigate = useNavigate()
