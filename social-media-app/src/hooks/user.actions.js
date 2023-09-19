@@ -6,7 +6,7 @@ function useUserActions() {
   const baseURL = 'http://localhost:8000/api'
   return {
     login,
-    // register,
+    register,
     logout,
   }
 
@@ -18,9 +18,15 @@ function useUserActions() {
     }))
   }
 
+  function register(data) {
+    return axios.post(`${baseURL}/auth/register/`, data).then((res) => {
+      setUserData(res.data);
+      navigate("/");
+    });
+  }
+
   function login(data) {
     return axios.post(`${baseURL}/auth/login/`, data).then((res) => {
-      console.log('login after', res.data)
       setUserData(res.data)
       navigate('/')
     })
