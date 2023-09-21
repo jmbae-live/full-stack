@@ -3,11 +3,12 @@ import { Card, Image } from "react-bootstrap"
 import { format } from "timeago.js"
 import { randomAvatar } from "../../utils"
 
-import { LikeFilled, LikeOutlined } from "@ant-design/icons"
+import { CommentOutlined, LikeFilled, LikeOutlined } from "@ant-design/icons"
 import axiosService from "../../helpers/axios"
+import { Link } from "react-router-dom"
 
 function Post(props) {
-	const { post, refresh } = props
+	const { post, refresh, isSinglePost } = props
 
 	const handleLikeClick = (action) => {
 		axiosService
@@ -37,6 +38,13 @@ function Post(props) {
 								<p className="fs-6 fw-lighter">
 									<small>{format(post.created)}</small>
 								</p>
+								{!isSinglePost && (
+									<p className="ms-1 fs-6">
+										<small>
+											<Link>{post.comments_count} comments</Link>
+										</small>
+									</p>
+								)}
 							</div>
 						</div>
 					</Card.Title>
@@ -81,6 +89,22 @@ function Post(props) {
 							<small>Like</small>
 						</p>
 					</div>
+					{!isSinglePost && (
+						<div className="d-flex flex-row">
+							<CommentOutlined
+								style={{
+									width: "24px",
+									height: "24px",
+									padding: "2px",
+									fontSize: "20px",
+									color: "#C4C4C4",
+								}}
+							/>
+							<p className="ms-1 mb-0">
+								<small>Comment</small>
+							</p>
+						</div>
+					)}
 				</Card.Footer>
 			</Card>
 		</>
