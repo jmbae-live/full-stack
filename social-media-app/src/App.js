@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Registration from "./pages/Registration"
 import ProtectedRoute from "./routes/ProtectedRoute"
+import SinglePost from "./components/posts/SinglePost"
 
 function App() {
 	return (
@@ -16,8 +17,16 @@ function App() {
 					</ProtectedRoute>
 				}
 			/>
-			<Route path="/login/" element={<Login/>} />
-			<Route path="/register/" element={<Registration/>} />
+			<Route path="/login/" element={<Login />} />
+			<Route path="/register/" element={<Registration />} />
+			<Route
+				path="/post/:postId/"
+				element={
+					<ProtectedRoute>
+						<SinglePost />
+					</ProtectedRoute>
+				}
+			/>
 		</Routes>
 	)
 }
