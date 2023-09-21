@@ -4,7 +4,7 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Registration from "./pages/Registration"
 import ProtectedRoute from "./routes/ProtectedRoute"
-import SinglePost from "./components/posts/SinglePost"
+import SinglePost from "./pages/SinglePost"
 
 function App() {
 	return (

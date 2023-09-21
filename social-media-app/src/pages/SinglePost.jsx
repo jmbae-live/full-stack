@@ -1,10 +1,10 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 import useSWR from "swr"
-import { fetcher } from "../../helpers/axios"
-import Layout from "../Layout"
+import { fetcher } from "../helpers/axios"
+import Layout from "../components/Layout"
 import { Col, Row } from "react-bootstrap"
-import Post from "./Post"
+import Post from "../components/posts/Post"
 
 function SinglePost() {
 	let { postId } = useParams()
