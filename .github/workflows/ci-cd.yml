@@ -34,5 +34,4 @@ jobs:
           passphrase: ''
           script: |
             cd full-stack
-            ls -laF
             ./docker-ncloud-deploy.sh
