@@ -33,7 +33,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ''
           script: |
-            ls -laF
             cd full-stack
-            ls -laF
             ./docker-ncloud-deploy.sh
