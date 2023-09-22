@@ -6,7 +6,7 @@ import CreatePost from "../components/posts/CreatePost"
 import Post from "../components/posts/Post"
 import { fetcher } from "../helpers/axios"
 import { getUser } from "../hooks/user.actions"
-import { randomAvatar } from "../utils"
+
 import ProfileCard from '../components/profile/ProfileCard';
 
 function Home() {
@@ -30,7 +30,7 @@ function Home() {
 					<Row className="border rounded align-items-center">
 						<Col className="flex-shrink-1">
 							<Image
-								src={randomAvatar()}
+								src={user.avatar}
 								roundedCircle
 								width={52}
 								height={52}

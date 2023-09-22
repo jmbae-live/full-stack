@@ -4,7 +4,7 @@ import { Card, Dropdown, Image } from "react-bootstrap"
 import { format } from "timeago.js"
 import axiosService from "../../helpers/axios"
 import { getUser } from "../../hooks/user.actions"
-import { randomAvatar } from "../../utils"
+
 import { Context } from "../Layout"
 import MoreToggleIcon from "../MoreToggleIcon"
 import UpdateComment from "./UpdateComment"
@@ -51,7 +51,7 @@ function Comment(props) {
 				<Card.Title className="d-flex flex-row justify-content-between">
 					<div className="d-flex flex-row">
 						<Image
-							src={randomAvatar()}
+							src={comment.author.avatar}
 							roundedCircle
 							width={48}
 							height={48}

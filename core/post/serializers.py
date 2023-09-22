@@ -1,3 +1,4 @@
+from django.conf import settings
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
@@ -21,6 +22,10 @@ class PostSerializer(AbstractSerializer):
         rep = super().to_representation(instance)
         author = User.objects.get_object_by_public_id(rep['author'])
         rep['author'] = UserSerializer(author).data
+        if settings.DEBUG:  # debug enabled for dev
+            request = self.context.get('request')
+            if request:
+                rep['author']['avatar'] = request.build_absolute_uri(rep['author']['avatar'])
         return rep
 
     def update(self, instance, validated_data):

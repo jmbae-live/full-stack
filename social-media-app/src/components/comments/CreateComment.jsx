@@ -1,20 +1,20 @@
 import React, { useContext, useState } from "react"
 import { Button, Form, Image } from "react-bootstrap"
 import { Context } from "../Layout"
-import { randomAvatar } from "../../utils"
+
 import { getUser } from "../../hooks/user.actions"
 import axiosService from "../../helpers/axios"
 
 function CreateComment(props) {
 	const { postId, refresh } = props
 	const { setToaster } = useContext(Context)
+	const user = getUser()
 
-	const [avatar, setAvatar] = useState(randomAvatar())
+	const [avatar, setAvatar] = useState(user.avatar)
 
 	const [validated, setValidated] = useState(false)
 	const [form, setForm] = useState({})
 
-	const user = getUser()
 
 	const handleSubmit = (event) => {
 		event.preventDefault()

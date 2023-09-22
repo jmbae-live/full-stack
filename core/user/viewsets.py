@@ -7,7 +7,7 @@ from core.user.serializers import UserSerializer
 
 
 class UserViewSet(AbstractViewSet):
-    parser_classes = (MultiPartParser,FormParser)
+    parser_classes = (MultiPartParser, FormParser)
     http_method_names = ('patch', 'get')
     permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer

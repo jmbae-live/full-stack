@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, Image, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import {getUser, useUserActions} from '../hooks/user.actions';
-import {randomAvatar} from '../utils';
+
 import {Link} from 'react-router-dom';
 
 function Navigationbar() {
@@ -19,7 +19,7 @@ function Navigationbar() {
           <Navbar.Collapse className="justify-content-end">
             <Nav>
               <NavDropdown
-                  title={<Image src={randomAvatar()} roundedCircle width={36}
+                  title={<Image src={user.avatar} roundedCircle width={36}
                                 height={36}/>}
               >
                 <NavDropdown.Item as={Link} to={`/profile/${user.id}/`}>Profile
