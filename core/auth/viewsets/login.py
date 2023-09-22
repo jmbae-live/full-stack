@@ -1,3 +1,5 @@
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -12,6 +14,16 @@ class LoginViewSet(ViewSet):
     permission_classes = (AllowAny,)
     http_method_names = ['post']
 
+    # @swagger_auto_schema(request_body=LoginSerializer) 시리얼라이저 참조 자동 파라미터 문서화
+    @swagger_auto_schema(manual_parameters=[
+        openapi.Parameter(
+            name='email',
+            in_=openapi.IN_PATH,
+            description='Email',
+            required=True,
+            type=openapi.TYPE_STRING
+        )
+    ]) # 수동 지정 예시
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         try:
