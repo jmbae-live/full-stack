@@ -158,3 +158,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://175.45.195.175',
     'http://postagram.s3-website.kr.object.ncloudstorage.com'
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'uploads'
+
+DEFAULT_AVATAR_URL = "https://avatars.dicebear.com/api/identicon/.svg"
