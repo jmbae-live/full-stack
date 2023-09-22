@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useMemo, useState } from "react"
 import Navigationbar from "./Navbar"
 import { useNavigate } from "react-router-dom"
 import { ArrowLeftOutlined } from "@ant-design/icons"
@@ -15,10 +15,13 @@ function Layout(props) {
 		message: "",
 		type: "",
 	})
-	
+
 	const navigate = useNavigate()
+
+	const value = useMemo(() => ({ toaster, setToaster }), [toaster])
+
 	return (
-		<Context.Provider>
+		<Context.Provider value={value}>
 			<div>
 				<Navigationbar />
 				{hasNavigationBack && (
