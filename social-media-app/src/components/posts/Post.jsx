@@ -34,7 +34,7 @@ function Post(props) {
                           border-2"
 							/>
 							<div className="d-flex flex-column justify-content-start align-self-center mt-2">
-								<p className="fs-6 m-0">{post.author.name}</p>
+								<p className="fs-6 m-0">{post.author.username}</p>
 								<p className="fs-6 fw-lighter">
 									<small>{format(post.created)}</small>
 								</p>

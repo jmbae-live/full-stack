@@ -1,14 +1,17 @@
 import { LikeFilled, LikeOutlined } from "@ant-design/icons"
-import React from "react"
-import { Card, Image } from "react-bootstrap"
+import React, { useContext } from "react"
+import { Card, Dropdown, Image } from "react-bootstrap"
 import { format } from "timeago.js"
 import axiosService from "../../helpers/axios"
 import { getUser } from "../../hooks/user.actions"
 import { randomAvatar } from "../../utils"
+import { Context } from "../Layout"
+import MoreToggleIcon from "../MoreToggleIcon"
 
 function Comment(props) {
 	const { postId, comment, refresh } = props
 	const user = getUser()
+	const { setToaster } = useContext(Context)
 
 	const handleLikeClick = (action) => {
 		axiosService
@@ -17,6 +20,28 @@ function Comment(props) {
 				refresh()
 			})
 			.catch((err) => console.error(err))
+	}
+
+	const handleDelete = () => {
+		axiosService
+			.delete(`/post/${postId}/comment/${comment.id}/`)
+			.then(() => {
+				setToaster({
+					type: "danger",
+					message: "Comment deleted 🚀",
+					show: true,
+					title: "Comment Deleted",
+				})
+				refresh()
+			})
+			.catch(() => {
+				setToaster({
+					type: "warning",
+					message: "Comment deleted 🚀",
+					show: true,
+					title: "Comment Deleted",
+				})
+			})
 	}
 
 	return (
@@ -32,12 +57,24 @@ function Comment(props) {
 							className="me-2 border border-primary border-2"
 						/>
 						<div className="d-flex flex-column justify-content-start align-self-center mt-2">
-							<p className="fs-6 m-0">{comment.author.name}</p>
+							<p className="fs-6 m-0">{comment.author.username}</p>
 							<p className="fs-6 fw-lighter">
 								<small>{format(comment.created)}</small>
 							</p>
 						</div>
 					</div>
+					{user.username === comment.author.username && (
+						<div>
+							<Dropdown>
+								<Dropdown.Toggle as={MoreToggleIcon}></Dropdown.Toggle>
+								<Dropdown.Menu>
+									<Dropdown.Item onClick={handleDelete} className="text-danger">
+										Delete
+									</Dropdown.Item>
+								</Dropdown.Menu>
+							</Dropdown>
+						</div>
+					)}
 				</Card.Title>
 				<Card.Text>{comment.body}</Card.Text>
 				<div className="d-flex flex-row justify-content-between">
