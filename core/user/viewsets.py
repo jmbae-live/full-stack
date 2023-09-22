@@ -1,3 +1,4 @@
+from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.permissions import IsAuthenticated
 
 from core.abstract.viewsets import AbstractViewSet
@@ -6,6 +7,7 @@ from core.user.serializers import UserSerializer
 
 
 class UserViewSet(AbstractViewSet):
+    parser_classes = (MultiPartParser,FormParser)
     http_method_names = ('patch', 'get')
     permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer

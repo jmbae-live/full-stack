@@ -43,9 +43,10 @@ function useUserActions() {
   }
 
   function edit(data, userId) {
-    console.log('data!!!!!', data)
     return axiosService.patch(`${baseURL}/user/${userId}/`,
-        data).then((res) => {
+        data, {
+          headers: {'Content-Type': 'multipart/form-data'},
+        }).then((res) => {
       // Registering the account in the store
       localStorage.setItem(
           'auth',
