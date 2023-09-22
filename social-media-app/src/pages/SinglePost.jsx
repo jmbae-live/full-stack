@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 import { Col, Row } from "react-bootstrap"
 import Post from "../components/posts/Post"
 import Comment from "../components/comments/Comment"
+import CreateComment from "../components/comments/CreateComment"
 
 function SinglePost() {
 	let { postId } = useParams()
@@ -18,7 +19,7 @@ function SinglePost() {
 				<Row className="justify-content-center">
 					<Col sm={8}>
 						<Post post={post.data} refresh={post.mutate} isSinglePost />
-
+						<CreateComment postId={post.data.id} refresh={comments.mutate} />
 						{comments.data &&
               comments.data.results.map((comment, index) => (
                 <Comment
