@@ -26,3 +26,4 @@ function ProfileCard(props) {
 }
 
 export default ProfileCard;
+  

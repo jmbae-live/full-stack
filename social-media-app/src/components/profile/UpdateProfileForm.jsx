@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import {Context} from '../Layout';
 import {useUserActions} from '../../hooks/user.actions';
 import {useNavigate} from 'react-router-dom';
-import {Button, Form} from 'react-bootstrap';
+import {Button, Form, Image} from 'react-bootstrap';
 
 function UpdateProfileForm(props) {
   const {profile} = props;
@@ -26,6 +26,7 @@ function UpdateProfileForm(props) {
       last_name: form.last_name,
       bio: form.bio,
     };
+
     const formData = new FormData();
 
     Object.keys(data).forEach((key) => {
@@ -34,10 +35,11 @@ function UpdateProfileForm(props) {
       }
     });
 
+    console.log('avatar!!', avatar)
     if (avatar) {
       formData.append("avatar", avatar);
     }
-
+    console.log(formData)
     userActions
     .edit(formData, profile.id)
     .then(() => {

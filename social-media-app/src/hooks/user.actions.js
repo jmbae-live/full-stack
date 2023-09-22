@@ -43,6 +43,7 @@ function useUserActions() {
   }
 
   function edit(data, userId) {
+    console.log('data!!!!!', data)
     return axiosService.patch(`${baseURL}/user/${userId}/`,
         data).then((res) => {
       // Registering the account in the store
