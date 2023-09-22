@@ -31,7 +31,6 @@ function ProfileDetails(props) {
               <Button
                   variant="primary"
                   size="sm"
-                  className="w-25"
                   onClick={() => navigate(`/profile/${user.id}/edit/`)}
               >
                 Edit
