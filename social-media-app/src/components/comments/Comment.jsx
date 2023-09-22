@@ -7,6 +7,7 @@ import { getUser } from "../../hooks/user.actions"
 import { randomAvatar } from "../../utils"
 import { Context } from "../Layout"
 import MoreToggleIcon from "../MoreToggleIcon"
+import UpdateComment from "./UpdateComment"
 
 function Comment(props) {
 	const { postId, comment, refresh } = props
@@ -68,6 +69,11 @@ function Comment(props) {
 							<Dropdown>
 								<Dropdown.Toggle as={MoreToggleIcon}></Dropdown.Toggle>
 								<Dropdown.Menu>
+									<UpdateComment
+										comment={comment}
+										refresh={refresh}
+										postId={postId}
+									/>
 									<Dropdown.Item onClick={handleDelete} className="text-danger">
 										Delete
 									</Dropdown.Item>
